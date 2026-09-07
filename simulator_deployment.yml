@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simulator
+spec:
+  selector:
+    matchLabels:
+      app: simulator
+  template:
+    metadata:
+      labels:
+        app: simulator
+    spec:
+      containers:
+      - name: simulator
+        image: simulator-image:v1
+        env:
+         - name: API_URL
+           value: "http://ingestion-service:9000/api/v1/telemetry/ingest"
+         - name: INTERVAL_SECONDS
+           value: "5"
+          
+      
+        
