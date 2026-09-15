@@ -13,12 +13,13 @@ spec:
     spec:
       containers:
       - name: simulator
-        image: simulator-image:v1
+        image: shashiacr123.azurecr.io/simulator-service:v2
+        ports:
+        - containerPort: 8000
+         
         env:
          - name: API_URL
-           value: "http://ingestion-service:9000/api/v1/telemetry/ingest"
-         - name: INTERVAL_SECONDS
-           value: "5"
-          
-      
+           value: "http://ingestion-service.default.svc.cluster.local:9000/api/v1/telemetry/ingest"
+         
+   
         
